@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const title = "HVAC Tips & Advice | Air Conditioning Repair Reseda CA Blog";
+const description = "Practical articles on air conditioning maintenance, repair signs, seasonal preparation, and home comfort for Reseda and San Fernando Valley homeowners.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="bg-primary-700 text-white py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">HVAC Tips & Advice</h1>
+      <p class="text-xl text-primary-100">Practical guidance to help you maintain comfort, improve efficiency, and avoid unexpected breakdowns.</p>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-8">
+        {posts.map((post) => (
+          <article class="bg-white border border-gray-200 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+            <time datetime={post.data.pubDate.toISOString()} class="text-sm text-primary-600 font-medium">
+              {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+            <h2 class="text-2xl font-bold text-gray-900 mt-2 mb-3">
+              <a href={`/blog/${post.slug}/`} class="hover:text-primary-600 transition-colors">{post.data.title}</a>
+            </h2>
+            <p class="text-gray-600 mb-4">{post.data.description}</p>
+            <a href={`/blog/${post.slug}/`} class="text-primary-600 font-medium hover:underline">Read article →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

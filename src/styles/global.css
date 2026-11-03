@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-sans text-gray-800 antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg shadow-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-primary-700 font-semibold rounded-lg border-2 border-primary-600 hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200;
+  }
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold text-gray-900 mb-4;
+  }
+  .section-subheading {
+    @apply text-lg text-gray-600 max-w-3xl mx-auto;
+  }
+}
+
+/* Basic prose styles for markdown content */
+.prose {
+  @apply text-gray-700 leading-relaxed;
+}
+.prose h2 {
+  @apply text-2xl font-bold text-gray-900 mt-10 mb-4;
+}
+.prose h3 {
+  @apply text-xl font-semibold text-gray-900 mt-8 mb-3;
+}
+.prose p {
+  @apply mb-4;
+}
+.prose ul {
+  @apply list-disc pl-6 mb-4 space-y-1;
+}
+.prose ol {
+  @apply list-decimal pl-6 mb-4 space-y-2;
+}
+.prose a {
+  @apply text-primary-600 hover:text-primary-700 underline;
+}
+.prose strong {
+  @apply font-semibold text-gray-900;
+}

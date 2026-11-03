@@ -1,0 +1,245 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  ogImage = 'https://airconditioningrepairresedaca.us/og-image.jpg',
+  noindex = false,
+} = Astro.props;
+
+const siteName = 'Air Conditioning Repair Reseda CA';
+const phone = '+16073400658';
+const phoneDisplay = '(607) 340-0658';
+const address = '7920 Etiwanda Ave, Reseda, CA 91335, USA';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "HVACBusiness",
+      "name": siteName,
+      "image": ogImage,
+      "telephone": phone,
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "7920 Etiwanda Ave",
+        "addressLocality": "Reseda",
+        "addressRegion": "CA",
+        "postalCode": "91335",
+        "addressCountry": "US"
+      },
+      "url": "https://airconditioningrepairresedaca.us",
+      "priceRange": "$$",
+      "areaServed": {
+        "@type": "City",
+        "name": "Reseda"
+      }
+    })} />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary-600 focus:text-white focus:px-4 focus:py-2 focus:rounded">
+      Skip to main content
+    </a>
+    
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 md:h-20">
+          <a href="/" class="flex items-center gap-2 group" aria-label="Air Conditioning Repair Reseda CA - Home">
+            <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+              AC
+            </div>
+            <div class="hidden sm:block">
+              <span class="font-bold text-gray-900 group-hover:text-primary-600 transition-colors">Air Conditioning Repair</span>
+              <span class="block text-xs text-gray-500">Reseda, CA</span>
+            </div>
+          </a>
+          
+          <nav class="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+            <a href="/" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">Home</a>
+            <a href="/services/" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">Services</a>
+            <a href="/service-areas/" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">Service Areas</a>
+            <a href="/about/" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">About</a>
+            <a href="/blog/" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">Blog</a>
+            <a href="/contact/" class="text-gray-700 hover:text-primary-600 font-medium transition-colors">Contact</a>
+          </nav>
+          
+          <div class="flex items-center gap-3">
+            <a href={`tel:${phone}`} class="hidden md:inline-flex items-center gap-2 text-primary-700 font-semibold hover:text-primary-800">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              {phoneDisplay}
+            </a>
+            <a href="/contact/" class="btn-primary text-sm px-4 py-2">Get Free Quote</a>
+            
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 hover:text-primary-600" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white">
+        <nav class="px-4 py-4 space-y-3" aria-label="Mobile navigation">
+          <a href="/" class="block py-2 text-gray-700 hover:text-primary-600 font-medium">Home</a>
+          <a href="/services/" class="block py-2 text-gray-700 hover:text-primary-600 font-medium">Services</a>
+          <a href="/service-areas/" class="block py-2 text-gray-700 hover:text-primary-600 font-medium">Service Areas</a>
+          <a href="/about/" class="block py-2 text-gray-700 hover:text-primary-600 font-medium">About</a>
+          <a href="/blog/" class="block py-2 text-gray-700 hover:text-primary-600 font-medium">Blog</a>
+          <a href="/faq/" class="block py-2 text-gray-700 hover:text-primary-600 font-medium">FAQ</a>
+          <a href="/contact/" class="block py-2 text-gray-700 hover:text-primary-600 font-medium">Contact</a>
+          <a href={`tel:${phone}`} class="flex items-center gap-2 py-2 text-primary-700 font-semibold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Call {phoneDisplay}
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold">AC</div>
+              <span class="font-bold text-white">Air Conditioning Repair Reseda CA</span>
+            </div>
+            <p class="text-sm text-gray-400 mb-4">
+              Professional HVAC services for homes and businesses in Reseda and the surrounding San Fernando Valley.
+            </p>
+            <a href={`tel:${phone}`} class="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              {phoneDisplay}
+            </a>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-white mb-4">Services</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/services/ac-repair/" class="hover:text-primary-400 transition-colors">AC Repair</a></li>
+              <li><a href="/services/ac-installation/" class="hover:text-primary-400 transition-colors">AC Installation</a></li>
+              <li><a href="/services/furnace-repair/" class="hover:text-primary-400 transition-colors">Furnace Repair</a></li>
+              <li><a href="/services/hvac-maintenance/" class="hover:text-primary-400 transition-colors">HVAC Maintenance</a></li>
+              <li><a href="/services/" class="hover:text-primary-400 transition-colors">View All Services</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-white mb-4">Service Areas</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/areas/reseda/" class="hover:text-primary-400 transition-colors">Reseda</a></li>
+              <li><a href="/areas/tarzana/" class="hover:text-primary-400 transition-colors">Tarzana</a></li>
+              <li><a href="/areas/northridge/" class="hover:text-primary-400 transition-colors">Northridge</a></li>
+              <li><a href="/areas/canoga-park/" class="hover:text-primary-400 transition-colors">Canoga Park</a></li>
+              <li><a href="/service-areas/" class="hover:text-primary-400 transition-colors">All Areas</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="font-semibold text-white mb-4">Company</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/about/" class="hover:text-primary-400 transition-colors">About Us</a></li>
+              <li><a href="/contact/" class="hover:text-primary-400 transition-colors">Contact</a></li>
+              <li><a href="/faq/" class="hover:text-primary-400 transition-colors">FAQ</a></li>
+              <li><a href="/blog/" class="hover:text-primary-400 transition-colors">Blog</a></li>
+              <li><a href="/privacy-policy/" class="hover:text-primary-400 transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms/" class="hover:text-primary-400 transition-colors">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="mt-10 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p class="text-sm text-gray-500">
+            &copy; {new Date().getFullYear()} Air Conditioning Repair Reseda CA. All rights reserved.
+          </p>
+          <p class="text-sm text-gray-500">
+            {address}
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Sticky mobile click-to-call -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-primary-600 text-white shadow-lg">
+      <a href={`tel:${phone}`} class="flex items-center justify-center gap-2 py-3.5 font-semibold text-lg" aria-label="Call us now">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        Call Now: {phoneDisplay}
+      </a>
+    </div>
+    <!-- Spacer for sticky button on mobile -->
+    <div class="h-14 md:hidden" aria-hidden="true"></div>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('hidden');
+        });
+      }
+    </script>
+  </body>
+</html>

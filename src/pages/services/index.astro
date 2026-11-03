@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+
+const title = "HVAC Services in Reseda, CA | AC Repair, Installation & More";
+const description = "Complete list of air conditioning and heating services for Reseda and the San Fernando Valley. Repair, installation, maintenance, and indoor air quality solutions.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="bg-primary-700 text-white py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">HVAC Services in Reseda, CA</h1>
+      <p class="text-xl text-primary-100 max-w-3xl">Professional air conditioning and heating solutions for homes and businesses. From emergency repairs to planned installations, we provide clear options and quality workmanship.</p>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service) => (
+          <a href={`/services/${service.slug}/`} class="group block p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md hover:border-primary-300 transition-all">
+            <h2 class="text-xl font-semibold text-gray-900 group-hover:text-primary-600 mb-2">{service.data.title}</h2>
+            <p class="text-gray-600 text-sm mb-3">{service.data.shortDescription}</p>
+            {service.data.priceRange && (
+              <p class="text-sm text-primary-700 font-medium mb-3">Typical range: {service.data.priceRange}</p>
+            )}
+            <span class="text-primary-600 font-medium text-sm group-hover:underline">Learn more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Not Sure Which Service You Need?</h2>
+      <p class="text-gray-600 mb-6">Call us and describe the issue. We’ll help you identify the right solution and schedule a convenient visit.</p>
+      <a href="tel:+16073400658" class="btn-primary">Call (607) 340-0658</a>
+    </div>
+  </section>
+</BaseLayout>

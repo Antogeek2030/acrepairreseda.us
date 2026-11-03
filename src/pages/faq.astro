@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "FAQ | Air Conditioning Repair Reseda CA";
+const description = "Answers to common questions about AC repair, installation, maintenance, pricing, and service in Reseda, CA and nearby areas.";
+
+const faqs = [
+  { q: "How quickly can you respond to an AC emergency?", a: "We prioritize no-cooling situations, especially during heat waves. Same-day appointments are often available when you call early. After-hours emergency service can be arranged for urgent cases." },
+  { q: "Do you offer free estimates?", a: "Yes. We provide free consultations and written estimates for both repairs and new installations so you can make an informed decision without pressure." },
+  { q: "What brands of equipment do you service?", a: "We work on most major residential and light-commercial brands. If a specialized part is needed, we source it promptly and keep you informed of timing." },
+  { q: "How often should I have my HVAC system maintained?", a: "Most manufacturers recommend professional maintenance at least once a year. Many homeowners prefer twice-yearly tune-ups—once before cooling season and once before heating season—to keep the system efficient and catch issues early." },
+  { q: "What is the typical cost of AC repair in Reseda?", a: "Repair costs vary widely depending on the problem, parts required, and system age. Common repairs often fall in the $89–$600 range, while major component work can be higher. We provide a clear estimate before beginning work." },
+  { q: "Do you install new air conditioning systems?", a: "Yes. We install central air conditioners, heat pumps, and ductless mini-splits. We help you evaluate options based on your home’s needs, efficiency goals, and budget." },
+  { q: "Are you available for commercial HVAC service?", a: "Yes. We provide service for offices, retail spaces, and other light commercial properties in the Reseda area and nearby communities." },
+  { q: "What payment methods do you accept?", a: "We accept major credit cards, checks, and electronic payments. Financing options may be available for larger installations—ask us for details." },
+  { q: "Do you clean air ducts?", a: "Yes. Professional duct cleaning can improve airflow and indoor air quality when ducts are contaminated with dust, debris, or biological growth. We can assess whether cleaning is beneficial for your system." },
+  { q: "How can I improve my home’s indoor air quality?", a: "Options include high-quality filters, air purifiers, UV lights, proper ventilation, and regular system maintenance. We can recommend solutions tailored to your concerns and budget." },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="bg-primary-700 text-white py-12 md:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h1>
+      <p class="text-xl text-primary-100">Straightforward answers about HVAC service in Reseda and the surrounding area.</p>
+    </div>
+  </section>
+
+  <section class="py-12 md:py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <summary class="flex items-center justify-between p-5 cursor-pointer font-medium text-gray-900 hover:bg-gray-50 list-none">
+              <span>{faq.q}</span>
+              <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="px-5 pb-5 text-gray-600 leading-relaxed">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+      
+      <div class="mt-12 p-8 bg-primary-50 rounded-2xl text-center">
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Still Have Questions?</h2>
+        <p class="text-gray-600 mb-6">We’re happy to help. Call us or send a message and we’ll get back to you promptly.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="tel:+16073400658" class="btn-primary">Call (607) 340-0658</a>
+          <a href="/contact/" class="btn-secondary">Contact Form</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
